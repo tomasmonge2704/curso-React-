@@ -1,9 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import ButtonAppBar from './components/NavBar';
-import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-
+import RecipeReviewCard from './components/ItemCount';
 
 
 
@@ -12,17 +11,13 @@ function App() {
   return (
     
     <div>
-    <ButtonAppBar>
-      
-    </ButtonAppBar>
+    <ButtonAppBar/>
+    
+    
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button variant="contained" color="primary">
-      Hello World
-    </Button>
+        
+        
+    <RecipeReviewCard/>
       </header>
     </div>
    

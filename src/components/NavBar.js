@@ -4,10 +4,13 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Container from '@material-ui/core/Container';
 import logo from './logo.svg';
+import ItemListContainer from './CartWidget';
+
+
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -25,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  
 
   return (
     <div className={classes.root}>
@@ -49,6 +53,7 @@ export default function ButtonAppBar() {
           
 
           <Button variant="contained" style={{position:'absolute', right:'0', marginRight:'10%'}}>Login</Button>
+          <ItemListContainer/>
         </Toolbar>
       </AppBar>
     </div>
