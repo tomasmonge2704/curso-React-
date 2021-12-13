@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import ButtonAppBar from './components/NavBar';
-import Button from '@material-ui/core/Button';
 import RecipeReviewCard from './components/ItemCount';
 
 
@@ -18,6 +16,7 @@ function App() {
         
         
     <RecipeReviewCard/>
+    
       </header>
     </div>
    
