@@ -1,6 +1,6 @@
 import './App.css';
 import ButtonAppBar from './components/NavBar';
-import RecipeReviewCard from './components/ItemCount';
+import ItemCount from './components/ItemCount';
 
 
 
@@ -15,7 +15,7 @@ function App() {
       <header className="App-header">
         
       
-    <RecipeReviewCard/>
+    <ItemCount stock="5" initial="1"/>
     
       </header>
     </div>
