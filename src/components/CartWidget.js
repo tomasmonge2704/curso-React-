@@ -25,7 +25,7 @@ export default function CartWidget() {
            
         <IconButton aria-label="show 17 new notifications" color="inherit">
        
-        <ItemListContainer/>
+        <ItemListContainer greeting="1"/>
             
             
         </IconButton>

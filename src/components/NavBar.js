@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import logo from './logo.svg';
-import ItemListContainer from './CartWidget';
+import CartWidget from './CartWidget';
 
 
 
@@ -53,9 +53,11 @@ export default function ButtonAppBar() {
           
 
           <Button variant="contained" style={{position:'absolute', right:'0', marginRight:'10%'}}>Login</Button>
-          <ItemListContainer/>
+          <CartWidget/>
         </Toolbar>
+        
       </AppBar>
+      
     </div>
   );
 }
