@@ -1,15 +1,15 @@
 import React from 'react';
-import Badge from '@material-ui/core/Badge';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ItemList from './ItemList';
 
 
-export default function ItemListContainer(props) {
+export default function ItemListContainer() {
     
     return(
    
-        <Badge badgeContent={props.greeting} color="secondary">
-        <ShoppingCartIcon />
-      </Badge>
+       <div>
+        <ItemList stock="5" initial="1"></ItemList>
+
+       </div>
        
            
       

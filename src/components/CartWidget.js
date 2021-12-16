@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import ItemListContainer from './ItemListContainer'
-
+import Badge from '@material-ui/core/Badge';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,15 +18,17 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 50,
     },
   }));
-export default function CartWidget() {
+export default function CartWidget(props) {
     const classes = useStyles();
     return(
     <div className={classes.sectionDesktop}>
            
         <IconButton aria-label="show 17 new notifications" color="inherit">
        
-        <ItemListContainer greeting="1"/>
-            
+         
+        <Badge badgeContent={props.greeting}  color="secondary">
+        <ShoppingCartIcon />
+        </Badge>    
             
         </IconButton>
         

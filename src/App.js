@@ -1,11 +1,9 @@
 import './App.css';
 import ButtonAppBar from './components/NavBar';
-import ItemCount from './components/ItemCount';
-
-
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
-  
+ 
   return (
     
     <div>
@@ -14,8 +12,8 @@ function App() {
     
       <header className="App-header">
         
-      
-    <ItemCount stock="5" initial="1"/>
+      <ItemListContainer/>
+    
     
       </header>
     </div>

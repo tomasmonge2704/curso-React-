@@ -53,7 +53,7 @@ export default function ButtonAppBar() {
           
 
           <Button variant="contained" style={{position:'absolute', right:'0', marginRight:'10%'}}>Login</Button>
-          <CartWidget/>
+          <CartWidget greeting="1"/>
         </Toolbar>
         
       </AppBar>
