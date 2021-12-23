@@ -35,7 +35,7 @@ export default function ItemCount({stock}){
         <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group" >
             <Button className="botonMenos" onClick={() =>{if (count !== 0){onAdd(count - 1)}else{console.log("no podes tener negativo");}}}><ExposureNeg1Icon/></Button>
             <Button>{count}</Button>
-            <Button className="botonMas" onClick={() => {if (stock == count){console.log("no stock");} else{onAdd(count + 1)}}}><ExposurePlus1Icon/></Button>
+            <Button className="botonMas" onClick={() => {if (stock === count){console.log("no stock");} else{onAdd(count + 1)}}}><ExposurePlus1Icon/></Button>
             <Button variant="contained" color="secondary" onClick={handleClick}>
             Ver mas
           </Button>

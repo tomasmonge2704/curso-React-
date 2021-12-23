@@ -1,6 +1,6 @@
 import './App.css';
 import ButtonAppBar from './components/NavBar';
-import Item from './components/Item'
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
  
@@ -12,7 +12,7 @@ function App() {
     
       <header className="App-header">
         
-      <Item/>
+      <ItemListContainer/>
     
     
       </header>
