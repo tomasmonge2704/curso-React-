@@ -6,11 +6,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import { red } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
-import ItemCount from "./ItemCount";
+import Button from '@material-ui/core/Button';
 
 
 
-export default function Item ({stock, prodData}) {
+
+export default function Item ({prodData}) {
    
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -54,11 +55,10 @@ export default function Item ({stock, prodData}) {
           />
           
           <CardContent>
+          <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',}}>
+            Ver mas
+          </Button>
           <Typography variant="h6">Stock disponible:{prodData.stock}</Typography>
-          <Typography variant="h6">precio: ${prodData.price}</Typography>
-          <ItemCount stock={prodData.stock}/>
-          
-    
           </CardContent>
           
         </Card> 
