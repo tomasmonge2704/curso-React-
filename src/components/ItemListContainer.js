@@ -4,7 +4,7 @@ const data = [{ id:"1", title:"Zapatilla Nike", price:"500", pictureUrl:"https:/
 // { id, title, price, pictureUrl }  
 export default function ItemListContainer() {
     const [products, setProducs] = useState([])
-    const promise = new Promise((resolve, reject)=> {
+    new Promise((resolve, reject)=> {
         
         setTimeout(()=>{
            resolve(setProducs(data))

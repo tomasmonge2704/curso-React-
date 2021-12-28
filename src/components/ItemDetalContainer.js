@@ -9,7 +9,7 @@ export default function ItemDetailContainer() {
     const [product, setProduc] = useState([])
     const GetItem = () => {
         
-        const promise = new Promise((resolve, reject)=> {
+        new Promise((resolve, reject)=> {
             
             setTimeout(()=>{
                resolve(setProduc(data2))
