@@ -42,13 +42,13 @@ export default function ButtonAppBar() {
        
             
           <Typography variant="h6" style={{ marginLeft:'20%' }} className={classes.marginRight}>
-          <Link to={`/vehiculos`}>Vehiculos</Link>
+          <Link to={`/category/vehiculos`}>Vehiculos</Link>
           </Typography>
           <Typography variant="h6"className={classes.marginRight}>
-          <Link to={`/electronica`}>Electronica</Link>
+          <Link to={`/category/electronica`}>Electronica</Link>
           </Typography>
           <Typography variant="h6"className={classes.marginRight}>
-          <Link to={`/libros`}>libros</Link>
+          <Link to={`/category/libros`}>libros</Link>
           </Typography>
           
 

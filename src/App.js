@@ -2,7 +2,6 @@ import './App.css';
 import ButtonAppBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetalContainer';
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
  
@@ -19,7 +18,7 @@ function App() {
     }>
     </Route>
   
-    <Route exact path="/vehiculos" element={
+    <Route exact path="/category/:categoryId" element={
       <div>
         <ButtonAppBar/>
        <header className="App-header">
@@ -28,25 +27,8 @@ function App() {
       </div>
     }>
     </Route>
-    <Route exact path="/electronica" element={
-      <div>
-        <ButtonAppBar/>
-       <header className="App-header">
-          <ItemListContainer/>
-        </header>
-      </div>
-    }>
-    </Route>
-    <Route exact path="/libros" element={
-      <div>
-        <ButtonAppBar/>
-       <header className="App-header">
-          <ItemListContainer/>
-        </header>
-      </div>
-    }>
-    </Route>
-    <Route exact path="/detalle" element={
+  
+    <Route exact path="/item/:Id" element={
       <div>
         <ButtonAppBar/>
        <header className="App-header">

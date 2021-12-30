@@ -44,7 +44,7 @@ export default function ItemDetail({prodData}) {
           <CardMedia
             className={classes.media}
             image={prodData.pictureUrl}
-            title="Paella dish"
+            
           />
           <CardHeader title={prodData.title}/>
           <CardContent>

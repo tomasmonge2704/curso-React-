@@ -51,12 +51,12 @@ export default function Item ({prodData}) {
           <CardMedia
             className={classes.media}
             image={prodData.pictureUrl}
-            title="Paella dish"
+           
           />
           
           <CardContent>
           <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',}}>
-            <Link to="/detalle">Ver detalle del producto</Link>
+            <Link to={`/item/${prodData.id}`}>Ver detalle del producto</Link>
           </Button>
           <Typography variant="h6">Stock disponible:{prodData.stock}</Typography>
           </CardContent>
