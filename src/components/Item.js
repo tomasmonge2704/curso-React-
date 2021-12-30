@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { red } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -56,7 +56,7 @@ export default function Item ({prodData}) {
           
           <CardContent>
           <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',}}>
-            Ver mas
+            <Link to="/detalle">Ver detalle del producto</Link>
           </Button>
           <Typography variant="h6">Stock disponible:{prodData.stock}</Typography>
           </CardContent>

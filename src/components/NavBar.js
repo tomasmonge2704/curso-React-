@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import logo from './logo.svg';
 import CartWidget from './CartWidget';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -38,17 +38,17 @@ export default function ButtonAppBar() {
         
       
         <img src={logo} style={{ height: '80px' }} alt="logo" />
-          <Button variant="contained" style={{ marginLeft:'10%' }} >inicio</Button>
+          <Button variant="contained" style={{ marginLeft:'10%' }} ><Link to={`/`}>inicio</Link></Button>
        
             
           <Typography variant="h6" style={{ marginLeft:'20%' }} className={classes.marginRight}>
-            vehiculos
+          <Link to={`/vehiculos`}>Vehiculos</Link>
           </Typography>
           <Typography variant="h6"className={classes.marginRight}>
-            electronica
+          <Link to={`/electronica`}>Electronica</Link>
           </Typography>
           <Typography variant="h6"className={classes.marginRight}>
-           libros
+          <Link to={`/libros`}>libros</Link>
           </Typography>
           
 
