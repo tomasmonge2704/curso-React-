@@ -45,7 +45,7 @@ export default function ButtonAppBar() {
           <Link to={`/category/vehiculos`}>Vehiculos</Link>
           </Typography>
           <Typography variant="h6"className={classes.marginRight}>
-          <Link to={`/category/electronica`}>Electronica</Link>
+          <Link to={`/category/zapatillas`}>Zapatillas</Link>
           </Typography>
           <Typography variant="h6"className={classes.marginRight}>
           <Link to={`/category/libros`}>libros</Link>
