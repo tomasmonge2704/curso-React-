@@ -41,7 +41,7 @@ export default function Item ({prodData}) {
       const classes = useStyles();
     
       return (
-         <Card className={classes.root} style={{ marginRight:"3%"}} >
+         <Card className={classes.root} style={{ margin:"3%"}} >
           <CardHeader
             
             
@@ -51,12 +51,12 @@ export default function Item ({prodData}) {
           <CardMedia
             className={classes.media}
             image={prodData.pictureUrl}
-           
+            title={prodData.title}
           />
           
           <CardContent>
           <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',}}>
-            <Link to={`/item/${prodData.id}`}>Ver detalle del producto</Link>
+            <Link to={`/item/${prodData.id}`} style={{ textDecoration: 'none' }}>Ver detalle del producto</Link>
           </Button>
           <Typography variant="h6">Stock disponible:{prodData.stock}</Typography>
           </CardContent>

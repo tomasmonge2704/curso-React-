@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext,useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -7,8 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import { red } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 import ItemCount from "./ItemCount";
+import CartContext from "./CartContext";
 
 export default function ItemDetail({prodData}) {
+
     const useStyles = makeStyles((theme) => ({
         root: {
           maxWidth: 345,
@@ -38,7 +40,10 @@ export default function ItemDetail({prodData}) {
         }
       }));
       const classes = useStyles();
+      const [count, onAdd] = useState(0);
+ 
         return(
+          
             <Card className={classes.root} style={{ marginRight:"3%"}} >
           
           <CardMedia
@@ -52,11 +57,12 @@ export default function ItemDetail({prodData}) {
           <Typography variant="h6" className={classes.alinear}>{prodData.detalle}</Typography>
           
           
-          <ItemCount stock={prodData.stock}/>
+          <ItemCount onAdd={onAdd} count={count} stock={prodData.stock}/>
           
           <Typography variant="h6" className={classes.alinear}>Stock disponible:{prodData.stock}</Typography>
           </CardContent>
           
         </Card> 
+       
         )
 }

@@ -3,8 +3,9 @@ import ButtonAppBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetalContainer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartContext from './components/CartContext';
 function App() {
- 
+  
   return (
     <BrowserRouter>
     <Routes>

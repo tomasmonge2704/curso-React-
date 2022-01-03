@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import logo from './logo.svg';
 import CartWidget from './CartWidget';
@@ -38,18 +37,18 @@ export default function ButtonAppBar() {
         
       
         <img src={logo} style={{ height: '80px' }} alt="logo" />
-          <Button variant="contained" style={{ marginLeft:'10%' }} ><Link to={`/`}>inicio</Link></Button>
+          <Button variant="contained" style={{ marginLeft:'10%' }} ><Link to={`/`} style={{ textDecoration: 'none' }}>inicio</Link></Button>
        
             
-          <Typography variant="h6" style={{ marginLeft:'20%' }} className={classes.marginRight}>
-          <Link to={`/category/vehiculos`}>Vehiculos</Link>
-          </Typography>
-          <Typography variant="h6"className={classes.marginRight}>
-          <Link to={`/category/zapatillas`}>Zapatillas</Link>
-          </Typography>
-          <Typography variant="h6"className={classes.marginRight}>
-          <Link to={`/category/libros`}>libros</Link>
-          </Typography>
+          <Button variant="contained" style={{ marginLeft:'20%' }} className={classes.marginRight}>
+          <Link to={`/category/vehiculos`} style={{ textDecoration: 'none' }}>Vehiculos</Link>
+          </Button>
+          <Button variant="contained" className={classes.marginRight}>
+          <Link to={`/category/zapatillas`} style={{ textDecoration: 'none' }}>Zapatillas</Link>
+          </Button>
+          <Button variant="contained" className={classes.marginRight}>
+          <Link to={`/category/libros`} style={{ textDecoration: 'none' }}>libros</Link>
+          </Button>
           
 
           <Button variant="contained" style={{position:'absolute', right:'0', marginRight:'10%'}}>Login</Button>
