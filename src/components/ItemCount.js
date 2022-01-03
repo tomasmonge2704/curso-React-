@@ -6,13 +6,7 @@ import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 import { Link } from 'react-router-dom';
 
 
-export default function ItemCount({stock,count,onAdd}){
- 
-
-    function onClick(evt) {
-      console.log('clicked');
-      console.log(count);
-    }
+export default function ItemCount({stock,count,onAdd,onClickk}){
     
     return (
       
@@ -23,7 +17,7 @@ export default function ItemCount({stock,count,onAdd}){
             <Button style={{minWidth:"56%"}} className="botonMas" onClick={() => {if (stock === count){console.log("no stock");} else{onAdd(count + 1)}}}><ExposurePlus1Icon/></Button>
           </ButtonGroup>
           <Link to={`/cart`} style={{ textDecoration: 'none' }}>
-          <Button variant="outlined" color="secondary" className='BotonCarrito' style={{ width:"100%" }} onClick={onClick}>
+          <Button variant="outlined" color="secondary" className='BotonCarrito' style={{ width:"100%" }} onClick={onClickk}>
             Agregar al carrito 
           </Button>
           </Link>

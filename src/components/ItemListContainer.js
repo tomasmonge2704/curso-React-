@@ -8,7 +8,7 @@ import { data } from "./datos";
  
     const {categoryId} = useParams();
     useEffect(()=>{
-      return (console.log(categoryId))
+      return (categoryId)
     },[categoryId])
     let categoriaProducts = data.filter( category => category.categoria === categoryId)
     if(categoryId === undefined) {

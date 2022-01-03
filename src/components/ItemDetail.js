@@ -41,7 +41,10 @@ export default function ItemDetail({prodData}) {
       }));
       const classes = useStyles();
       const [count, onAdd] = useState(0);
- 
+      const {addItem} = useContext(CartContext);
+      const onClickk = () => {
+        console.log("clickeado")
+      }
         return(
           
             <Card className={classes.root} style={{ marginRight:"3%"}} >
@@ -57,7 +60,7 @@ export default function ItemDetail({prodData}) {
           <Typography variant="h6" className={classes.alinear}>{prodData.detalle}</Typography>
           
           
-          <ItemCount onAdd={onAdd} count={count} stock={prodData.stock}/>
+          <ItemCount onClickk={onClickk} onAdd={onAdd} count={count} stock={prodData.stock}/>
           
           <Typography variant="h6" className={classes.alinear}>Stock disponible:{prodData.stock}</Typography>
           </CardContent>
