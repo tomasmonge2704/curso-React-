@@ -55,9 +55,11 @@ export default function Item ({prodData}) {
           />
           
           <CardContent>
+          <Link to={`/item/${prodData.id}`} style={{ textDecoration: 'none' }}>
           <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',}}>
-            <Link to={`/item/${prodData.id}`} style={{ textDecoration: 'none' }}>Ver detalle del producto</Link>
+          Ver detalle del producto
           </Button>
+          </Link>
           <Typography variant="h6">Stock disponible:{prodData.stock}</Typography>
           </CardContent>
           

@@ -3,7 +3,8 @@ import ButtonAppBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetalContainer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CartContext from './components/CartContext';
+import Cart from './components/Cart';
+
 function App() {
   
   return (
@@ -38,7 +39,15 @@ function App() {
       </div>
     }>
     </Route>
-   
+    <Route exact path="/cart" element={
+      <div>
+        <ButtonAppBar/>
+       <header className="App-header">
+          <Cart></Cart>
+        </header>
+      </div>
+    }>
+    </Route>
       </Routes> 
     </BrowserRouter>
   );

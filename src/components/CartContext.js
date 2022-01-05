@@ -1,6 +1,6 @@
 import React from 'react';
-const CartContext = React.createContext(["hola"]);
+ const cartContext = React.createContext([]);
 
 
+ export default cartContext;
 
-export default CartContext;

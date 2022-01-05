@@ -7,7 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import { red } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 import ItemCount from "./ItemCount";
-import CartContext from "./CartContext";
+import cartContext from "./CartContext";
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export default function ItemDetail({prodData}) {
 
@@ -40,13 +42,21 @@ export default function ItemDetail({prodData}) {
         }
       }));
       const classes = useStyles();
-      const [count, onAdd] = useState(0);
-      const {addItem} = useContext(CartContext);
+      const [display, setdisplay] = useState('');
+      const [displayNone, setdisplayNone] = useState('Noseve');
+      const [count, onAdd] = useState(1);
+     
+      const addItem = useContext(cartContext);
+     
       const onClickk = () => {
         console.log("clickeado")
+        addItem.push(prodData)
+        setdisplay('Noseve');
+        setdisplayNone('');
       }
+
         return(
-          
+        
             <Card className={classes.root} style={{ marginRight:"3%"}} >
           
           <CardMedia
@@ -60,12 +70,16 @@ export default function ItemDetail({prodData}) {
           <Typography variant="h6" className={classes.alinear}>{prodData.detalle}</Typography>
           
           
-          <ItemCount onClickk={onClickk} onAdd={onAdd} count={count} stock={prodData.stock}/>
-          
+          <ItemCount noseve={display} onClickk={onClickk} onAdd={onAdd} count={count} stock={prodData.stock} />
+          <Link className={displayNone} to={`/cart`} style={{ textDecoration: 'none'}}>
+          <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',width:"100%",marginTop:"10px"}}>
+          ir al carrito
+          </Button>
+          </Link>
           <Typography variant="h6" className={classes.alinear}>Stock disponible:{prodData.stock}</Typography>
           </CardContent>
           
         </Card> 
-       
+        
         )
 }

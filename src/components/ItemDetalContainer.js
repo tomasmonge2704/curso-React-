@@ -2,7 +2,7 @@ import ItemDetail from "./ItemDetail";
 import { useState} from "react";
 import { useParams } from "react-router-dom";
 import { data } from "./datos";
-
+import '../App.css';
 
  
 
