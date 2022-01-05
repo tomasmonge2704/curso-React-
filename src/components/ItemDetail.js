@@ -46,11 +46,17 @@ export default function ItemDetail({prodData}) {
       const [displayNone, setdisplayNone] = useState('Noseve');
       const [count, onAdd] = useState(1);
      
-      const addItem = useContext(cartContext);
+      const productosAgregados = useContext(cartContext);
      
       const onClickk = () => {
-        console.log("clickeado")
-        addItem.push(prodData)
+        
+        if(productosAgregados.find( item => item.title === prodData.title)){
+          prodData.cantidad = prodData.cantidad + count;
+        }
+        else{
+          prodData.cantidad = count;
+          productosAgregados.push(prodData)
+        }   
         setdisplay('Noseve');
         setdisplayNone('');
       }
