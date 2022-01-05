@@ -6,11 +6,11 @@ import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 
 
 
-export default function ItemCount({stock,count,onAdd,onClickk,noseve}){
+export default function ItemCount({stock,count,onAdd,onClickk}){
     
     return (
       
-        <div  className={noseve}>
+        <div>
         <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
             <Button style={{minWidth:"56%"}} className="botonMenos" onClick={() =>{if (count !== 0){onAdd(count - 1)}else{console.log("no podes tener negativo");}}}><ExposureNeg1Icon/></Button>
             <Button style={{minWidth:"56%"}}>{count}</Button>

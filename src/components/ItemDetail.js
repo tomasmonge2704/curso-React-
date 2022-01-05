@@ -69,8 +69,9 @@ export default function ItemDetail({prodData}) {
           <Typography variant="h6" className={classes.alinear}>precio: ${prodData.price}</Typography>
           <Typography variant="h6" className={classes.alinear}>{prodData.detalle}</Typography>
           
-          
-          <ItemCount noseve={display} onClickk={onClickk} onAdd={onAdd} count={count} stock={prodData.stock} />
+          <div className={display}>
+          <ItemCount onClickk={onClickk} onAdd={onAdd} count={count} stock={prodData.stock} />
+          </div>
           <Link className={displayNone} to={`/cart`} style={{ textDecoration: 'none'}}>
           <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',width:"100%",marginTop:"10px"}}>
           ir al carrito
