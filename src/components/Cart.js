@@ -1,5 +1,5 @@
 import cartContext from "./CartContext"
-import React from 'react';
+import React , {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,26 +8,31 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-
-
+import CancelIcon from '@material-ui/icons/Cancel';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
 });
 
-function Subtotal (){
-  let subtotal = 0;
-  cartContext._currentValue.map(prodData => (
-    subtotal = subtotal + (prodData.price * prodData.cantidad)
-  ))
-  return subtotal
-}
-
 export default function Cart() {
   const classes = useStyles();
- 
+  const productosAgregados = useContext(cartContext);
+
+  function Subtotal (){
+    let subtotal = 0;
+    productosAgregados.map(prodData => (
+      subtotal = subtotal + (prodData.price * prodData.cantidad)
+    ))
+    return subtotal
+  }
+  function borrarRow(title){
+  
+    console.log(title)
+    }
+
   return(
       
    <div>
@@ -45,9 +50,15 @@ export default function Cart() {
           </TableRow>
         </TableHead>
         <TableBody>
-        {cartContext._currentValue.map(prodData => (
+        {productosAgregados.map(prodData => (
             <TableRow key={prodData.title}>
-              <TableCell>{prodData.title}</TableCell>
+               
+              <TableCell><Button onClick={borrarRow.bind(this, prodData.title)}
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        startIcon={<DeleteIcon/>}
+      ></Button>  {prodData.title}</TableCell>
               <TableCell align="right">${prodData.price}</TableCell>
               <TableCell align="right">{prodData.cantidad}</TableCell>
               <TableCell align="right">${prodData.price * prodData.cantidad}</TableCell>
