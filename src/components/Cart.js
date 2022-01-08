@@ -74,6 +74,9 @@ export default function Cart() {
               color="secondary"
               className={classes.button}
               startIcon={<DeleteIcon />}
+              style={{
+                marginLeft:"5%"
+              }}
             >
               Borrar todo
             </Button>

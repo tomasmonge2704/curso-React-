@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +23,10 @@ export default function CartWidget(props) {
     const classes = useStyles();
     return(
     <div className={classes.sectionDesktop}>
-           
+         <Link
+          to={`/cart`}
+          style={{ textDecoration: "none" }}
+        >  
         <IconButton aria-label="show 17 new notifications" color="inherit">
        
          
@@ -31,8 +35,10 @@ export default function CartWidget(props) {
         </Badge>    
             
         </IconButton>
-        
+        </Link>
       </div>
       );
 
+          
+       
 }
