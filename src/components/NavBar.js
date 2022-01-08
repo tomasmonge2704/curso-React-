@@ -39,17 +39,21 @@ export default function ButtonAppBar() {
         <img src={logo} style={{ height: '80px' }} alt="logo" />
           <Button variant="contained" style={{ marginLeft:'10%' }} ><Link to={`/`} style={{ textDecoration: 'none' }}>inicio</Link></Button>
        
-            
-          <Button variant="contained" style={{ marginLeft:'20%' }} className={classes.marginRight}>
-          <Link to={`/category/vehiculos`} style={{ textDecoration: 'none' }}>Vehiculos</Link>
-          </Button>
+          <Link to={`/category/vehiculos`} style={{ textDecoration: 'none',marginLeft:'20%' }}>  
           <Button variant="contained" className={classes.marginRight}>
-          <Link to={`/category/zapatillas`} style={{ textDecoration: 'none' }}>Zapatillas</Link>
+          Vehiculos
           </Button>
+          </Link>
+          <Link to={`/category/zapatillas`} style={{ textDecoration: 'none' }}>
           <Button variant="contained" className={classes.marginRight}>
-          <Link to={`/category/libros`} style={{ textDecoration: 'none' }}>libros</Link>
+            Zapatillas
           </Button>
-          
+          </Link>
+          <Link to={`/category/libros`} style={{ textDecoration: 'none' }}>
+          <Button variant="contained" className={classes.marginRight}>
+            libros
+          </Button>
+          </Link>
 
           <Button variant="contained" style={{position:'absolute', right:'0', marginRight:'10%'}}>Login</Button>
           <CartWidget greeting="1"/>
