@@ -1,4 +1,4 @@
-import {cartContext} from "./CartContext"
+import {cartContext, clear} from "./CartContext"
 import React , {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -28,10 +28,13 @@ export default function Cart() {
     return subtotal
   }
   function borrarRow(title){
-  
-    console.log(title)
+   
+    console.log(title);
     }
-
+  function borrarTodo(){
+    clear(productosAgregados);
+    console.log(productosAgregados);
+  }
   return(
       
    <div>
@@ -63,7 +66,12 @@ export default function Cart() {
               <TableCell align="right">${prodData.price * prodData.cantidad}</TableCell>
             </TableRow>
           ))}
-
+          <Button onClick={borrarTodo}
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        startIcon={<DeleteIcon/>}
+      >Borrar todo</Button>
           <TableRow>
             <TableCell rowSpan={3} />
             <TableCell colSpan={2}>Subtotal</TableCell>

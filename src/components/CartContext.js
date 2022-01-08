@@ -7,5 +7,8 @@ export function addItem(){
    
 }
 
-
+export function clear(productosAgregados){
+   
+    productosAgregados.splice(0, productosAgregados.length);
+}
 
