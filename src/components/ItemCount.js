@@ -6,7 +6,7 @@ import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 
 
 
-export default function ItemCount({stock,count,onAdd,onClickk}){
+export default function ItemCount({stock,count,onAdd,onAddFunction}){
     
     return (
       
@@ -17,7 +17,7 @@ export default function ItemCount({stock,count,onAdd,onClickk}){
             <Button style={{minWidth:"56%"}} className="botonMas" onClick={() => {if (stock === count){console.log("no stock");} else{onAdd(count + 1)}}}><ExposurePlus1Icon/></Button>
           </ButtonGroup>
           
-          <Button variant="outlined" color="secondary" className='BotonCarrito' style={{ width:"100%" }} onClick={onClickk}>
+          <Button variant="outlined" color="secondary" className='BotonCarrito' style={{ width:"100%" }} onClick={onAddFunction}>
             Agregar al carrito 
           </Button>
           

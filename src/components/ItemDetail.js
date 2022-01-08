@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { red } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 import ItemCount from "./ItemCount";
-import cartContext from "./CartContext";
+import {cartContext} from "./CartContext";
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
@@ -48,7 +48,7 @@ export default function ItemDetail({prodData}) {
      
       const productosAgregados = useContext(cartContext);
      
-      const onClickk = () => {
+      const onAddFunction = () => {
         
         if(productosAgregados.find( item => item.title === prodData.title)){
           prodData.cantidad = prodData.cantidad + count;
@@ -76,7 +76,7 @@ export default function ItemDetail({prodData}) {
           <Typography variant="h6" className={classes.alinear}>{prodData.detalle}</Typography>
           
           <div className={display}>
-          <ItemCount onClickk={onClickk} onAdd={onAdd} count={count} stock={prodData.stock} />
+          <ItemCount onAddFunction={onAddFunction} onAdd={onAdd} count={count} stock={prodData.stock} />
           </div>
           <Link className={displayNone} to={`/cart`} style={{ textDecoration: 'none'}}>
           <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',width:"100%",marginTop:"10px"}}>
