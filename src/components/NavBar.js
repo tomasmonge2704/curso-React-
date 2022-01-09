@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import logo from './logo.svg';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
-
+import { cartContext } from './CartContext';
 
 
 
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  const productosAgregados = useContext(cartContext);
   
 
   return (
@@ -56,7 +57,7 @@ export default function ButtonAppBar() {
           </Link>
 
           <Button variant="contained" style={{position:'absolute', right:'0', marginRight:'10%'}}>Login</Button>
-          <CartWidget greeting="1"/>
+          <CartWidget greeting={productosAgregados.length}/>
         </Toolbar>
         
       </AppBar>
