@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { red } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 import ItemCount from "./ItemCount";
-import {cartContext} from "./CartContext";
+import {cartContext, addItem} from "./CartContext";
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
@@ -49,14 +49,7 @@ export default function ItemDetail({prodData}) {
       const productosAgregados = useContext(cartContext);
      
       const onAddFunction = () => {
-        
-        if(productosAgregados.find( item => item.title === prodData.title)){
-          prodData.cantidad = prodData.cantidad + count;
-        }
-        else{
-          prodData.cantidad = count;
-          productosAgregados.push(prodData)
-        }   
+        addItem(productosAgregados, count, prodData)
         setdisplay('Noseve');
         setdisplayNone('');
       }
