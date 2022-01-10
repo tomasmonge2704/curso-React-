@@ -31,7 +31,7 @@ export default function CartWidget(props) {
        
          
         <Badge badgeContent={props.greeting}  color="secondary">
-        <ShoppingCartIcon />
+        <ShoppingCartIcon  style={{ color: "#fff" }} />
         </Badge>    
             
         </IconButton>

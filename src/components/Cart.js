@@ -1,15 +1,9 @@
 import { cartContext, clear, clearEspecifico } from "./CartContext";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import DeleteIcon from "@material-ui/icons/Delete";
+import '../styles.css';
 import Button from "@material-ui/core/Button";
+import DeleteIcon from "@material-ui/icons/Delete";
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
@@ -30,45 +24,60 @@ export default function Cart() {
   function borrarRow(title) {
     document.getElementById(title).remove();
     clearEspecifico(productosAgregados, title);
+    
   }
   function borrarTodo() {
     [...document.getElementsByClassName("productosRow")].map(n => n && n.remove());
     clear(productosAgregados);
   }
+  
   return (
-    <div>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="spanning table">
-          <TableHead>
-            <TableRow></TableRow>
-            <TableRow>
-              <TableCell>Desc</TableCell>
-              <TableCell align="right">Precio/u</TableCell>
-              <TableCell align="right">Unit</TableCell>
-              <TableCell align="right">Suma</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {productosAgregados.map((prodData) => (
-              <TableRow className={"productosRow"} id={prodData.title} key={prodData.title}>
-                <TableCell>
-                  <Button
+    <div className="wrap cf">
+        
+        <div className="heading cf">
+          <h1>My Cart</h1>
+          <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              style={{
+                float:"right"
+              }}
+            >continue shopping</Button>
+          
+        </div>
+        <div className="cart">
+          <ul className="cartWrap productosRow"  >
+          {productosAgregados.map((prodData) => (
+            <li className="items odd" id={prodData.title} key={prodData.title}>
+              <div className="infoWrap"> 
+                <div className="cartSection">
+                  <img src={prodData.pictureUrl} alt="" className="itemImg" />
+                  <p className="itemNumber">#{prodData.id}</p>
+                  <h3>{prodData.title}</h3>
+                  <p> <input type="text" className="qty" placeholder={prodData.cantidad} /> x ${prodData.price}</p>
+                  <p className="stockStatus"> In Stock</p>
+                </div>  
+                <div className="prodTotal cartSection" >
+                  <p> ${prodData.price * prodData.cantidad}</p>
+                </div>
+                <div className="cartSection">
+                <Button
                     onClick={borrarRow.bind(this, prodData.title)}
-                    variant="contained"
                     color="secondary"
                     className={classes.button}
                     startIcon={<DeleteIcon />}
-                  ></Button>{" "}
-                  {prodData.title}
-                </TableCell>
-                <TableCell align="right">${prodData.price}</TableCell>
-                <TableCell align="right">{prodData.cantidad}</TableCell>
-                <TableCell align="right">
-                  ${prodData.price * prodData.cantidad}
-                </TableCell>
-              </TableRow>
+                    style={{
+                      float:"right"
+                    }}
+                  ></Button>
+                </div>
+              </div>
+            </li>
             ))}
-            <Button
+       
+          </ul>
+          <Button
               onClick={borrarTodo}
               variant="contained"
               color="secondary"
@@ -80,23 +89,22 @@ export default function Cart() {
             >
               Borrar todo
             </Button>
-            <TableRow>
-              <TableCell rowSpan={3} />
-              <TableCell colSpan={2}>Subtotal</TableCell>
-              <TableCell align="right">${Subtotal()}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Tax</TableCell>
-              <TableCell align="right">{`21 %`}</TableCell>
-              <TableCell align="right">${Subtotal() * 0.21}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell colSpan={2}>Total</TableCell>
-              <TableCell align="right">${Subtotal() * 1.21}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+        </div>
+        
+        <div className="subtotal cf">
+          <ul style={{
+               listStyleType:"none"
+              }} >
+            <li className="totalRow"><span className="label">Subtotal</span><span className="value">${Subtotal()}</span></li>
+            <li className="totalRow"><span className="label">Tax</span><span className="value">${Subtotal() * 0.21}</span></li>
+            <li className="totalRow final"><span className="label">Total</span><span className="value">${Subtotal() * 1.21}</span></li>
+            <li className="totalRow"><Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+            >checkout</Button></li>
+          </ul>
+        </div>
+      </div>
   );
 }

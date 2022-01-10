@@ -42,7 +42,7 @@ function App() {
     <Route exact path="/cart" element={
       <div>
         <ButtonAppBar/>
-       <header className="App-header">
+       <header>
           <Cart></Cart>
         </header>
       </div>
