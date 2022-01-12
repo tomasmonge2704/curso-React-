@@ -7,11 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import { red } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 import ItemCount from "./ItemCount";
-import {cartContext, addItem} from "./CartContext";
+import {cartContext} from "./CartContext";
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-export default function ItemDetail({prodData}) {
+export default function ItemDetail({item}) {
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -46,10 +46,11 @@ export default function ItemDetail({prodData}) {
       const [displayNone, setdisplayNone] = useState('Noseve');
       const [count, onAdd] = useState(1);
      
-      const productosAgregados = useContext(cartContext);
-     
+      const context = useContext(cartContext);
+      
+     console.log(context.cart)
       const onAddFunction = () => {
-        addItem(productosAgregados, count, prodData)
+       context.addItem(item, count)
         setdisplay('Noseve');
         setdisplayNone('');
       }
@@ -60,23 +61,23 @@ export default function ItemDetail({prodData}) {
           
           <CardMedia
             className={classes.media}
-            image={prodData.pictureUrl}
+            image={item.pictureUrl}
             
           />
-          <CardHeader title={prodData.title}/>
+          <CardHeader title={item.title}/>
           <CardContent>
-          <Typography variant="h6" className={classes.alinear}>precio: ${prodData.price}</Typography>
-          <Typography variant="h6" className={classes.alinear}>{prodData.detalle}</Typography>
+          <Typography variant="h6" className={classes.alinear}>precio: ${item.price}</Typography>
+          <Typography variant="h6" className={classes.alinear}>{item.detalle}</Typography>
           
           <div className={display}>
-          <ItemCount onAddFunction={onAddFunction} onAdd={onAdd} count={count} stock={prodData.stock} />
+          <ItemCount onAddFunction={onAddFunction} onAdd={onAdd} count={count} stock={item.stock} />
           </div>
           <Link className={displayNone} to={`/cart`} style={{ textDecoration: 'none'}}>
           <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',width:"100%",marginTop:"10px"}}>
           ir al carrito
           </Button>
           </Link>
-          <Typography variant="h6" className={classes.alinear}>Stock disponible:{prodData.stock}</Typography>
+          <Typography variant="h6" className={classes.alinear}>Stock disponible:{item.stock}</Typography>
           </CardContent>
           
         </Card> 

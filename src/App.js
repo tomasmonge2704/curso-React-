@@ -4,10 +4,11 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetalContainer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from './components/Cart';
-
+import { CustomProvider } from './components/CartContext';
 function App() {
   
   return (
+    <CustomProvider>
     <BrowserRouter>
     <Routes>
     <Route exact path="/" element={
@@ -39,6 +40,7 @@ function App() {
       </div>
     }>
     </Route>
+    
     <Route exact path="/cart" element={
       <div>
         <ButtonAppBar/>
@@ -48,8 +50,10 @@ function App() {
       </div>
     }>
     </Route>
+    
       </Routes> 
     </BrowserRouter>
+    </CustomProvider>
   );
 }
 

@@ -28,7 +28,7 @@ export default function ItemDetailContainer() {
     
     return (
         <div style={{ width:"100%", justifyContent:'center', display:'flex', marginTop:'5%'}}>
-        <ItemDetail prodData={GetItem()}/>
+        <ItemDetail item={GetItem()}/>
         </div>
      )
 }

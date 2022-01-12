@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-  const productosAgregados = useContext(cartContext);
+  const context = useContext(cartContext);
   
 
   return (
@@ -57,7 +57,7 @@ export default function ButtonAppBar() {
           </Link>
 
           <Button variant="contained" style={{position:'absolute', right:'0', marginRight:'10%'}}>Login</Button>
-          <CartWidget greeting={productosAgregados.length}/>
+          <CartWidget greeting={context.cart.length}/>
         </Toolbar>
         
       </AppBar>
