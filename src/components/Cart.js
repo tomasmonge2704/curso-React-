@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "../styles.css";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
@@ -24,19 +25,20 @@ export default function Cart() {
   }
   function borrarRow(title) {
     document.getElementById(title).remove();
-   // clearEspecifico(productosAgregados, title);
+    context.removeItem(title)
   }
   function borrarTodo() {
     [...document.getElementsByClassName("productosRow")].map(
       (n) => n && n.remove()
     );
-   // clear(productosAgregados);
+   context.clear()
   }
 
   return (
     <div className="wrap cf">
       <div className="heading cf">
         <h1>My Cart</h1>
+        <Link to={`/`} style={{ textDecoration: 'none'}}>
         <Button
           variant="contained"
           color="secondary"
@@ -47,6 +49,7 @@ export default function Cart() {
         >
           continue shopping
         </Button>
+        </Link>
       </div>
       <div>
         {context.cart.length > 0 ? (

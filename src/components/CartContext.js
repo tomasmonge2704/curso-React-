@@ -24,8 +24,15 @@ export const CustomProvider = ({defaultValue = [], children}) =>{
     return cart.find(e=> e.item.id === id)
   }
   //remove
-  const removeItem = (id) =>{
-    const newCart = [...cart].map(item => item.id !== id)
+  const removeItem = (title) =>{
+    const newCart = cart
+    
+    for (let i = 0; i < newCart.length; i++) {
+      if (newCart[i].item.title.trim() === title.trim()) {
+        newCart.splice(i, 1);
+      }
+    }
+    
     setCart(newCart)
   }
   //clear
@@ -33,7 +40,7 @@ export const CustomProvider = ({defaultValue = [], children}) =>{
     setCart([])
   }
   return (
-    <Provider value={{cart, addItem}}>
+    <Provider value={{cart, addItem, removeItem, clear}}>
       {children}
     </Provider>
   )
