@@ -2,31 +2,20 @@ import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { data } from "./datos";
+import {getDocs, getFirestore, doc, collection} from "firebase/firestore"
 
-    export default function ItemListContainer() {
-    
- 
-    const {categoryId} = useParams();
-    useEffect(()=>{
-      return (categoryId)
-    },[categoryId])
-    let categoriaProducts = data.filter( category => category.categoria === categoryId)
-    if(categoryId === undefined) {
-        categoriaProducts = data;
-    }
-
-    const [products, setProducs] = useState([])
-    new Promise((resolve, reject)=> {
-        
-        setTimeout(()=>{
-           resolve(setProducs(categoriaProducts))
-        }, 2000);
-       
+export default function ItemListContainer() {
+  const [stateData, setProduct] = useState([])
+  useEffect(()=>{
+    const db = getFirestore();
+    const itemsCollection = collection(db, "items");
+    getDocs(itemsCollection).then((snapshot)=>{ 
+        setProduct(snapshot.docs.map((doc)=>({id: doc.id,...doc.data()})));
     });
-  
-  return(
-            <ItemList Products={products}/>
-           )
-   
-   
+  }, []);
+    
+
+
+
+  return <ItemList Products={stateData} />;
 }
