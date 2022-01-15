@@ -5,7 +5,7 @@ export default function ItemList ({Products}) {
 return (
     <div style={{ width:"100%", justifyContent:'center', display:'flex',height:'100%', flexWrap:"wrap"}}>
         {Products.map(prodData =>
-        <Item prodData={prodData}/>
+        <Item key={prodData.id} prodData={prodData}/>
         )}
         </div>)
 }
