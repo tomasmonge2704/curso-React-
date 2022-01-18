@@ -7,7 +7,6 @@ import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 
 
 export default function ItemCount({stock,count,onAdd,onAddFunction}){
-    
     return (
       
         <div>

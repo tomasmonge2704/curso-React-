@@ -28,7 +28,7 @@ export default function ItemDetailContainer() {
       }, []);
    
      console.log(data)
-      if (data.length == 0){
+      if (data.length === 0){
         setData([{}])
       }
     return (

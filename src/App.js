@@ -12,42 +12,42 @@ function App() {
     <BrowserRouter>
     <Routes>
     <Route exact path="/" element={
-      <div>
+      <>
         <ButtonAppBar/>
        <header className="App-header">
           <ItemListContainer/>
         </header>
-      </div>
+      </>
     }>
     </Route>
   
     <Route exact path="/category/:categoryId" element={
-      <div>
+      <>
         <ButtonAppBar/>
        <header className="App-header">
           <ItemListContainer/>
         </header>
-      </div>
+      </>
     }>
     </Route>
   
     <Route exact path="/item/:Id" element={
-      <div>
+      <>
         <ButtonAppBar/>
        <header className="App-header">
           <ItemDetailContainer></ItemDetailContainer>
         </header>
-      </div>
+      </>
     }>
     </Route>
     
     <Route exact path="/cart" element={
-      <div>
+      <>
         <ButtonAppBar/>
        <header>
           <Cart></Cart>
         </header>
-      </div>
+      </>
     }>
     </Route>
     
