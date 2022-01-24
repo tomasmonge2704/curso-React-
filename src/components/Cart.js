@@ -1,5 +1,5 @@
 import { cartContext } from "./CartContext";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../styles.css";
 import Button from "@material-ui/core/Button";
@@ -16,18 +16,15 @@ export default function Cart() {
   const classes = useStyles();
   const context = useContext(cartContext);
   const [orderId, setOrderId] = useState("")
-  console.log(context.cart)
-  context.cart.map((prodData) => (console.log(prodData)))
-  function Subtotal() {
-    let subtotal = 0;
-    context.cart.map(
-      (item) => (subtotal = subtotal + item.item.price * item.quantity)
-    );
-    return subtotal;
-  }
+  const [subtotal, setSubtotal] = useState()
+  
+  useEffect(()=>{
+    setSubtotal(context.cartTotal())
+  })
   function borrarRow(id) {
     document.getElementById(id).remove();
     context.removeItem(id)
+   
   }
   function borrarTodo() {
     [...document.getElementsByClassName("productosRow")].map(
@@ -41,7 +38,7 @@ export default function Cart() {
     const order = {
       buyer:{name:"agustin"},
       items: context.cart,
-      total: Subtotal() * 1.21
+      total: subtotal * 1.21
     };
     const db = getFirestore();
     const ordersCollection = collection(db, "orders");
@@ -161,15 +158,15 @@ export default function Cart() {
         >
           <li className="totalRow">
             <span className="label">Subtotal</span>
-            <span className="value">${Subtotal()}</span>
+            <span className="value">${subtotal}</span>
           </li>
           <li className="totalRow">
             <span className="label">Tax</span>
-            <span className="value">${Subtotal() * 0.21}</span>
+            <span className="value">${subtotal * 0.21}</span>
           </li>
           <li className="totalRow final">
             <span className="label">Total</span>
-            <span className="value">${Subtotal() * 1.21}</span>
+            <span className="value">${subtotal * 1.21}</span>
           </li>
           <li className="totalRow">
             <Button

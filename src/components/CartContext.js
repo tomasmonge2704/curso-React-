@@ -6,6 +6,7 @@ const {Provider} = cartContext
 
 export const CustomProvider = ({defaultValue = [], children}) =>{
   const [cart, setCart] = useState(defaultValue)
+  const [cartCounter, setCartCount] = useState();
   const addItem = (item, quantity) => {
     if (isIncart(item.id)){
       const newCart = [...cart]
@@ -39,8 +40,21 @@ export const CustomProvider = ({defaultValue = [], children}) =>{
   const clear = ()=>{
     setCart([])
   }
+  //cantidad de items en el carrito
+  const cartCount = ()=>{
+    setCartCount(cart.length)
+   return cartCounter
+  }
+  // total
+  const cartTotal = ()=>{
+    let subtotal = 0;
+    cart.map(
+      (item) => (subtotal = subtotal + item.item.price * item.quantity)
+    );
+    return subtotal;
+  }
   return (
-    <Provider value={{cart, addItem, removeItem, clear}}>
+    <Provider value={{cart, addItem, removeItem, clear, cartCount, cartTotal}}>
       {children}
     </Provider>
   )
