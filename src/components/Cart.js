@@ -46,7 +46,10 @@ export default function Cart() {
     const db = getFirestore();
     const ordersCollection = collection(db, "orders");
     addDoc(ordersCollection, order).then(({id})=> setOrderId(id));
-    alert("Su Id de orden es: ",orderId);
+    [...document.getElementsByClassName("productosRow")].map(
+      (n) => n && n.remove()
+    );
+   context.clear()
   }
   return (
     <div className="wrap cf">
@@ -149,6 +152,7 @@ export default function Cart() {
       >
         Borrar todo
       </Button>
+      <p>su id de compra es:{orderId}</p>
       <div className="subtotal cf">
         <ul
           style={{
