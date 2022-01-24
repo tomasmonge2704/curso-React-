@@ -1,10 +1,11 @@
 import { cartContext } from "./CartContext";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../styles.css";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Link } from "react-router-dom";
+import {getFirestore,collection, addDoc} from "firebase/firestore"
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
@@ -14,6 +15,7 @@ const useStyles = makeStyles({
 export default function Cart() {
   const classes = useStyles();
   const context = useContext(cartContext);
+  const [orderId, setOrderId] = useState("")
   console.log(context.cart)
   context.cart.map((prodData) => (console.log(prodData)))
   function Subtotal() {
@@ -34,6 +36,18 @@ export default function Cart() {
    context.clear()
   }
 
+  function sendOrden(){
+
+    const order = {
+      buyer:{name:"agustin"},
+      items: context.cart,
+      total: Subtotal() * 1.21
+    };
+    const db = getFirestore();
+    const ordersCollection = collection(db, "orders");
+    addDoc(ordersCollection, order).then(({id})=> setOrderId(id));
+    alert("Su Id de orden es: ",orderId);
+  }
   return (
     <div className="wrap cf">
       <div className="heading cf">
@@ -158,6 +172,7 @@ export default function Cart() {
               variant="contained"
               color="secondary"
               className={classes.button}
+              onClick={sendOrden}
             >
               checkout
             </Button>

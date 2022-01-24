@@ -1,69 +1,48 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import { red } from '@material-ui/core/colors';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-
+import $ from 'jquery';
 
 
 export default function Item ({prodData}) {
-   
-    const useStyles = makeStyles((theme) => ({
-        root: {
-          maxWidth: 345,
-        },
-        typography: {
-          padding: theme.spacing(2),
-        },
-        media: {
-          height: 0,
-          paddingTop: '56.25%', // 16:9
-        },
-        expand: {
-          transform: 'rotate(0deg)',
-          marginLeft: 'auto',
-          transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-          }),
-        },
-        expandOpen: {
-          transform: 'rotate(180deg)',
-        },
-        avatar: {
-          backgroundColor: red[500],
-        },
-      }));
-      const classes = useStyles();
-    
+  
+    function buyButton(id){
+      $(`.${id}`).addClass("clicked");
+    }
+    function removeClass(id){
+      $(`.${id}`).removeClass("clicked");
+    }
+  
       return (
-         <Card className={classes.root} style={{ margin:"3%"}} >
-          <CardHeader
-            
-            
-            title={prodData.title}
-            
-          />
-          <CardMedia
-            className={classes.media}
-            image={prodData.pictureUrl}
-            title={prodData.title}
-          />
-          
-          <CardContent>
-          <Link to={`/item/${prodData.id}`} style={{ textDecoration: 'none' }}>
-          <Button variant="contained" color="secondary" style={{justifyContent:'center', display:'flex',}}>
-          Ver detalle del producto
-          </Button>
-          </Link>
-          <Typography variant="h6">Stock disponible:{prodData.stock}</Typography>
-          </CardContent>
-          
-        </Card> 
+        <div className="wrapper">
+        <div className="container">
+          <div className="top" style={{background:`url(${prodData.pictureUrl}) no-repeat center center`, backgroundSize:"100%"}} />
+          <div className={`bottom ${prodData.id}`}>
+            <div className="left">
+              <div className="details">
+                <h1 style={{fontSize:"1.3em"}}>{prodData.title}</h1>
+                <p>${prodData.price}</p>
+              </div>
+              <div className="buy" onClick={buyButton.bind(this, prodData.id)}><i className="material-icons">add_shopping_cart</i></div>
+            </div>
+            <div className="right">
+              <div className="done"><i className="material-icons">done</i></div>
+              <div className="details">
+                <h1 style={{fontSize:"1.5em"}}>{prodData.title}</h1>
+                <p>Added to your cart</p>
+              </div>
+              <div className="remove" onClick={removeClass.bind(this, prodData.id)}><i className="material-icons">clear</i></div>
+            </div>
+          </div>
+        </div>
+        <Link to={`/item/${prodData.id}`} style={{ textDecoration: 'none' }}>
+        <div className="inside">
+          <div className="icon"><i className="material-icons">info_outline</i></div>
+          <div className="contents">
+            <p>{prodData.detalle}</p>
+          </div>
+        </div>
+        </Link>
+      </div>
         
       );
    }
