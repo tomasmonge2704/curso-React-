@@ -24,11 +24,11 @@ export const CustomProvider = ({defaultValue = [], children}) =>{
     return cart.find(e=> e.item.id === id)
   }
   //remove
-  const removeItem = (title) =>{
+  const removeItem = (id) =>{
     const newCart = cart
     
     for (let i = 0; i < newCart.length; i++) {
-      if (newCart[i].item.title.trim() === title.trim()) {
+      if (newCart[i].item.id.trim() === id.trim()) {
         newCart.splice(i, 1);
       }
     }

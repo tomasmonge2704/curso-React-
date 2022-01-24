@@ -25,9 +25,9 @@ export default function Cart() {
     );
     return subtotal;
   }
-  function borrarRow(title) {
-    document.getElementById(title).remove();
-    context.removeItem(title)
+  function borrarRow(id) {
+    document.getElementById(id).remove();
+    context.removeItem(id)
   }
   function borrarTodo() {
     [...document.getElementsByClassName("productosRow")].map(
@@ -76,7 +76,7 @@ export default function Cart() {
                 
                 <li
                   className="items odd"
-                  id={prodData.item.title}
+                  id={prodData.item.id}
                   key={prodData.item.title}
                 >
                   <div className="infoWrap">
@@ -104,7 +104,7 @@ export default function Cart() {
                     </div>
                     <div className="cartSection">
                       <Button
-                        onClick={borrarRow.bind(this, prodData.item.title)}
+                        onClick={borrarRow.bind(this, prodData.item.id)}
                         color="secondary"
                         className={classes.button}
                         startIcon={<DeleteIcon />}

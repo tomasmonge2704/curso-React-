@@ -1,17 +1,20 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-
+import { cartContext } from "./CartContext";
 
 export default function Item ({prodData}) {
   
     function buyButton(id){
       $(`.${id}`).addClass("clicked");
+      context.addItem(prodData, 1);
     }
     function removeClass(id){
       $(`.${id}`).removeClass("clicked");
+      context.removeItem(id);
     }
-  
+    const context = useContext(cartContext);
+
       return (
         <div className="wrapper">
         <div className="container">
