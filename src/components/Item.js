@@ -18,7 +18,7 @@ export default function Item ({prodData}) {
       return (
         <div className="wrapper">
         <div className="container">
-          <div className="top" style={{background:`url(${prodData.pictureUrl}) no-repeat center center`, backgroundSize:"100%"}} />
+          <div className="top" style={{background:`url(${prodData.pictureUrl[0]}) no-repeat center center`, backgroundSize:"100%"}} />
           <div className={`bottom ${prodData.id}`}>
             <div className="left">
               <div className="details">

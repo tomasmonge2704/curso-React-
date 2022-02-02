@@ -44,31 +44,31 @@ window.addEventListener('resize', slideImage);
       <div className="product-imgs cardd" style={{padding:"10px"}}>
         <div className="img-display">
           <div className="img-showcase">
-            <img src={item.pictureUrl} alt="shoe image" style={{borderRadius:"20px"}} />
-            <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg" alt="shoe image" style={{borderRadius:"20px"}}/>
-            <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg" alt="shoe image" style={{borderRadius:"20px"}} />
-            <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg" alt="shoe image" style={{borderRadius:"20px"}}/>
+            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])} alt="shoe image" style={{borderRadius:"20px"}} />
+            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])} alt="shoe image" style={{borderRadius:"20px"}}/>
+            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])} alt="shoe image" style={{borderRadius:"20px"}} />
+            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])} alt="shoe image" style={{borderRadius:"20px"}}/>
           </div>
         </div>
         <div className="img-select">
           <div className="img-item">
             <a href="#" data-id={1}>
-              <img src={item.pictureUrl}  alt="shoe image" />
+              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])}  alt="shoe image" />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={2}>
-              <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg" alt="shoe image" />
+              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])} alt="shoe image" />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={3}>
-              <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg" alt="shoe image" />
+              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])} alt="shoe image" />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={4}>
-              <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg" alt="shoe image" />
+              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])} alt="shoe image" />
             </a>
           </div>
         </div>

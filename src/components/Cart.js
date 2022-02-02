@@ -1,22 +1,31 @@
 import { CartContext } from "./CartContext";
-import React, { useContext, useState, useEffect } from "react";
+import * as React from 'react';
+import { useContext, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../styles.css";
 import Button from '@mui/material/Button';
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Link } from "react-router-dom";
-import {getFirestore,collection, addDoc} from "firebase/firestore"
+import {getFirestore,collection, addDoc} from "firebase/firestore";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
 });
-
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 export default function Cart(props) {
   
   const classes = useStyles();
   const context = useContext(CartContext);
-  const [orderId, setOrderId] = useState("")
+  const [orderId, setOrderId] = useState("xxxx-xxxxx-xxxx")
   const [subtotal, setSubtotal] = useState()
   
   const {cart} = context;
@@ -50,7 +59,17 @@ export default function Cart(props) {
     addDoc(ordersCollection, order).then(({id})=> setOrderId(id));
     setTempCart([])
    context.clear()
+   handleClickOpen()
   }
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     
     <div className="wrap cf">
@@ -83,7 +102,7 @@ export default function Cart(props) {
                   <div className="infoWrap">
                     <div className="cartSection">
                       <img
-                        src={prodData.item.pictureUrl}
+                        src={prodData.item.pictureUrl[0]}
                         alt=""
                         className="itemImg"
                       />
@@ -153,7 +172,7 @@ export default function Cart(props) {
       >
         Borrar todo
       </Button>
-      <p>su id de compra es:{orderId}</p>
+      
       <div className="subtotal cf">
         <ul
           style={{
@@ -184,6 +203,27 @@ export default function Cart(props) {
           </li>
         </ul>
       </div>
+      <div>
+     
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Gracias por su compra!"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            su id de compra es : {orderId}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          
+          <Button onClick={handleClose}>Agree</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
     </div>
     
   );
