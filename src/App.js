@@ -45,7 +45,9 @@ function App() {
       <>
         <ButtonAppBar/>
        <header>
-          <Cart></Cart>
+        
+          <Cart/>
+          
         </header>
       </>
     }>

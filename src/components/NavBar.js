@@ -1,67 +1,159 @@
-import React,{useContext} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import logo from '../logo.svg';
+import * as React from 'react';
+import {useContext, useEffect} from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
-import { cartContext } from './CartContext';
+import { CartContext } from './CartContext';
 
+const pages = ['vehiculos', 'zapatillas', 'libros'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  marginRight : {
-    marginRight: 50,
-  },
-}));
-
-export default function ButtonAppBar() {
+const ButtonAppBar = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
   
-  const classes = useStyles();
-  const context = useContext(cartContext);
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  const context = useContext(CartContext);
+ 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <AppBar position="static" style={{backgroundColor:"#282c34", backdropFilter:"blur(20px)" }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+        <Link to={`/`} style={{ textDecoration: 'none' }}>
+          <Button
+            variant="contained"
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+          >
+            inicio
+          </Button>
+          </Link>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page) => (
+                <Link to={`/category/${page}`} style={{ textDecoration: 'none'}}>  
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+                </Link>
+              ))}
+            </Menu>
+          </Box>
           
-        <Toolbar >
-        
+          <Link to={`/`} style={{ textDecoration: 'none', marginRight:"20%" }}>
+          <Button
+            variant="contained"
+            sx={{  display: { xs: 'flex', md: 'none' } }}
+          >
+            Inicio
+          </Button>
+          </Link>
+         
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:"space-evenly" }}>
+            {pages.map((page) => (
+              <Link to={`/category/${page}`} style={{ textDecoration: 'none' }}>
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                variant='contained'
+              >
+                {page}
+              </Button>
+              </Link>
+            ))}
+          </Box>
+          <Box style={{marginRight:"3%"}}>
+          <CartWidget greeting={context.cartCount()} />
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+           
+          </Box>
       
-        <img src={logo} style={{ height: '80px' }} alt="logo" />
-          <Button variant="contained" style={{ marginLeft:'10%' }} ><Link to={`/`} style={{ textDecoration: 'none' }}>inicio</Link></Button>
-       
-          <Link to={`/category/vehiculos`} style={{ textDecoration: 'none',marginLeft:'20%' }}>  
-          <Button variant="contained" className={classes.marginRight}>
-          Vehiculos
-          </Button>
-          </Link>
-          <Link to={`/category/zapatillas`} style={{ textDecoration: 'none' }}>
-          <Button variant="contained" className={classes.marginRight}>
-            Zapatillas
-          </Button>
-          </Link>
-          <Link to={`/category/libros`} style={{ textDecoration: 'none' }}>
-          <Button variant="contained" className={classes.marginRight}>
-            libros
-          </Button>
-          </Link>
-
-          <Button variant="contained" style={{position:'absolute', right:'0', marginRight:'10%'}}>Login</Button>
-          <CartWidget greeting={context.cartCount()}/>
+          
+          
+          
         </Toolbar>
-        
-      </AppBar>
-      
-    </div>
+      </Container>
+    </AppBar>
   );
-}
+};
+export default ButtonAppBar;

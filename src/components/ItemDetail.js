@@ -1,52 +1,35 @@
 import React, { useContext, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import { red } from "@material-ui/core/colors";
-import Typography from "@material-ui/core/Typography";
+import Button from '@mui/material/Button';
+import { CartContext } from "./CartContext";
 import ItemCount from "./ItemCount";
-import { cartContext } from "./CartContext";
-import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+
 export default function ItemDetail({ item }) {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      maxWidth: 345,
-    },
-    typography: {
-      padding: theme.spacing(2),
-    },
-    media: {
-      height: 0,
-      paddingTop: "56.25%", // 16:9
-    },
-    expand: {
-      transform: "rotate(0deg)",
-      marginLeft: "auto",
-      transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: "rotate(180deg)",
-    },
-    avatar: {
-      backgroundColor: red[500],
-    },
-    alinear: {
-      justifyContent: "center",
-      display: "flex",
-    },
-  }));
-  const classes = useStyles();
+  const imgs = document.querySelectorAll('.img-select a');
+const imgBtns = [...imgs];
+let imgId = 1;
+
+imgBtns.forEach((imgItem) => {
+    imgItem.addEventListener('click', (event) => {
+        event.preventDefault();
+        imgId = imgItem.dataset.id;
+        slideImage();
+    });
+});
+
+function slideImage(){
+    const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+
+    document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+}
+
+window.addEventListener('resize', slideImage);
   const [display, setdisplay] = useState("");
   const [displayNone, setdisplayNone] = useState("Noseve");
   const [count, onAdd] = useState(1);
 
-  const context = useContext(cartContext);
+  const context = useContext(CartContext);
 
   const onAddFunction = () => {
     context.addItem(item, count);
@@ -55,17 +38,61 @@ export default function ItemDetail({ item }) {
   };
 
   return (
-    <Card className={classes.root} style={{ marginRight: "3%" }}>
-      <CardMedia className={classes.media} image={item.pictureUrl} />
-      <CardHeader title={item.title} />
-      <CardContent>
-        <Typography variant="h6" className={classes.alinear}>
-          precio: ${item.price}
-        </Typography>
-        <Typography variant="h6" className={classes.alinear}>
-          {item.detalle}
-        </Typography>
-
+    <div className="card-wrapper">
+    <div className="card">
+      {/* card left */}
+      <div className="product-imgs cardd" style={{padding:"10px"}}>
+        <div className="img-display">
+          <div className="img-showcase">
+            <img src={item.pictureUrl} alt="shoe image" style={{borderRadius:"20px"}} />
+            <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg" alt="shoe image" style={{borderRadius:"20px"}}/>
+            <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg" alt="shoe image" style={{borderRadius:"20px"}} />
+            <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg" alt="shoe image" style={{borderRadius:"20px"}}/>
+          </div>
+        </div>
+        <div className="img-select">
+          <div className="img-item">
+            <a href="#" data-id={1}>
+              <img src={item.pictureUrl}  alt="shoe image" />
+            </a>
+          </div>
+          <div className="img-item">
+            <a href="#" data-id={2}>
+              <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg" alt="shoe image" />
+            </a>
+          </div>
+          <div className="img-item">
+            <a href="#" data-id={3}>
+              <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg" alt="shoe image" />
+            </a>
+          </div>
+          <div className="img-item">
+            <a href="#" data-id={4}>
+              <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg" alt="shoe image" />
+            </a>
+          </div>
+        </div>
+      </div>
+      {/* card right */}
+      <div className="product-content cardd">
+        <h2 className="product-title">{item.title}</h2>
+       
+        <div className="product-price">
+          <p className="new-price">Price: <span>${item.price}</span></p>
+          <p className="new-price">Stock: <span>{item.stock}</span></p>
+        </div>
+        <div className="product-detail" >
+          <h2>Descripcion: </h2>
+          <p>{item.detalle}</p>
+         
+          <ul>
+            <li>Available: <span>in stock</span></li>
+            <li>Categoria: <span>{item.categoria}</span></li>
+         
+          </ul>
+          
+        </div>
+        
         <div className={display}>
           <ItemCount
             onAddFunction={onAddFunction}
@@ -92,10 +119,9 @@ export default function ItemDetail({ item }) {
             ir al carrito
           </Button>
         </Link>
-        <Typography variant="h6" className={classes.alinear}>
-          Stock disponible:{item.stock}
-        </Typography>
-      </CardContent>
-    </Card>
+       
+      </div>
+    </div>
+  </div>
   );
 }

@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-import { cartContext } from "./CartContext";
+import { CartContext } from "./CartContext";
 
 export default function Item ({prodData}) {
   
@@ -13,7 +13,7 @@ export default function Item ({prodData}) {
       $(`.${id}`).removeClass("clicked");
       context.removeItem(id);
     }
-    const context = useContext(cartContext);
+    const context = useContext(CartContext);
 
       return (
         <div className="wrapper">

@@ -1,8 +1,8 @@
-import { cartContext } from "./CartContext";
+import { CartContext } from "./CartContext";
 import React, { useContext, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "../styles.css";
-import Button from "@material-ui/core/Button";
+import Button from '@mui/material/Button';
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Link } from "react-router-dom";
 import {getFirestore,collection, addDoc} from "firebase/firestore"
@@ -12,24 +12,29 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Cart() {
+export default function Cart(props) {
+  
   const classes = useStyles();
-  const context = useContext(cartContext);
+  const context = useContext(CartContext);
   const [orderId, setOrderId] = useState("")
   const [subtotal, setSubtotal] = useState()
   
+  const {cart} = context;
+  const [tempCart, setTempCart] = useState(cart)
+ 
   useEffect(()=>{
     setSubtotal(context.cartTotal())
-  })
+   
+  },[tempCart])
   function borrarRow(id) {
-    document.getElementById(id).remove();
+   // document.getElementById(id).remove();
+   const filteredCart = tempCart.filter(e => e.id !== id)
+   setTempCart(filteredCart)
     context.removeItem(id)
    
   }
   function borrarTodo() {
-    [...document.getElementsByClassName("productosRow")].map(
-      (n) => n && n.remove()
-    );
+    setTempCart([])
    context.clear()
   }
 
@@ -43,12 +48,11 @@ export default function Cart() {
     const db = getFirestore();
     const ordersCollection = collection(db, "orders");
     addDoc(ordersCollection, order).then(({id})=> setOrderId(id));
-    [...document.getElementsByClassName("productosRow")].map(
-      (n) => n && n.remove()
-    );
+    setTempCart([])
    context.clear()
   }
   return (
+    
     <div className="wrap cf">
       <div className="heading cf">
         <h1>My Cart</h1>
@@ -66,10 +70,10 @@ export default function Cart() {
         </Link>
       </div>
       <div>
-        {context.cart.length > 0 ? (
+        {cart.length > 0 ? (
           <div className="cart">
             <ul className="cartWrap productosRow">
-              {context.cart.map((prodData) => (
+              {cart.map((prodData) => (
                 
                 <li
                   className="items odd"
@@ -181,5 +185,6 @@ export default function Cart() {
         </ul>
       </div>
     </div>
+    
   );
 }

@@ -1,6 +1,5 @@
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import '../App.css';
 import { useState, useEffect } from "react";
 import {getDocs, getFirestore, collection, query, where} from "firebase/firestore"
  
@@ -27,13 +26,13 @@ export default function ItemDetailContainer() {
         });
       }, []);
    
-     console.log(data)
+     
       if (data.length === 0){
         setData([{}])
       }
     return (
-        <div style={{ width:"100%", justifyContent:'center', display:'flex', marginTop:'5%'}}>
+        
         <ItemDetail item={data[0]}/>
-        </div>
+       
      )
 }
