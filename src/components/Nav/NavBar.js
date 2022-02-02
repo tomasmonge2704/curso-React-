@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useContext, useEffect} from 'react';
+import {useContext} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,7 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
-import { CartContext } from './CartContext';
+import { CartContext } from '../Cart/CartContext';
 
 const pages = ['vehiculos', 'zapatillas', 'libros'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];

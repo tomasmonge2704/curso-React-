@@ -1,10 +1,11 @@
-import './App.css';
-import ButtonAppBar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetalContainer';
+
+import './css/styles.css';
+import ButtonAppBar from './components/Nav/NavBar';
+import ItemListContainer from './components/Item/ItemListContainer';
+import ItemDetailContainer from './components/itemDetails/ItemDetalContainer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cart from './components/Cart';
-import { CustomProvider } from './components/CartContext';
+import Cart from './components/Cart/Cart';
+import { CustomProvider } from './components/Cart/CartContext';
 function App() {
   
   return (

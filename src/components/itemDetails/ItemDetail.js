@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Button from '@mui/material/Button';
-import { CartContext } from "./CartContext";
+import { CartContext } from "../Cart/CartContext";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 
@@ -40,40 +40,40 @@ window.addEventListener('resize', slideImage);
   return (
     <div className="card-wrapper">
     <div className="card">
-      {/* card left */}
+     
       <div className="product-imgs cardd" style={{padding:"10px"}}>
         <div className="img-display">
           <div className="img-showcase">
-            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])} alt="shoe image" style={{borderRadius:"20px"}} />
-            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])} alt="shoe image" style={{borderRadius:"20px"}}/>
-            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])} alt="shoe image" style={{borderRadius:"20px"}} />
-            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])} alt="shoe image" style={{borderRadius:"20px"}}/>
+            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])}  style={{borderRadius:"20px"}} />
+            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])}  style={{borderRadius:"20px"}}/>
+            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])}  style={{borderRadius:"20px"}} />
+            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])}  style={{borderRadius:"20px"}}/>
           </div>
         </div>
         <div className="img-select">
           <div className="img-item">
             <a href="#" data-id={1}>
-              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])}  alt="shoe image" />
+              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])}   />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={2}>
-              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])} alt="shoe image" />
+              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])}  />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={3}>
-              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])} alt="shoe image" />
+              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])}  />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={4}>
-              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])} alt="shoe image" />
+              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])}  />
             </a>
           </div>
         </div>
       </div>
-      {/* card right */}
+      
       <div className="product-content cardd">
         <h2 className="product-title">{item.title}</h2>
        

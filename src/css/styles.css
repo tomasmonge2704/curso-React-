@@ -5,10 +5,41 @@ body {
   color: #333;
   -webkit-font-smoothing: antialiased;
   font-family: "Droid Serif", serif;
+  margin: 0;
+}
+.App {
+  text-align: center;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.App-header {
+  background-color: #e8e8e8;
+  min-height: 100vh;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+ 
+ 
+}
+
+.App-link {
+  color: #fff;
+}
+
+
+
+.Noseve {
+  display: none;
 }
 
 img {
   max-width: 100%;
+  min-width: 10vh;
+  max-height: 45vh;
 }
 
 .cf:before, .cf:after {

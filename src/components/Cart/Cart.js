@@ -2,7 +2,6 @@ import { CartContext } from "./CartContext";
 import * as React from 'react';
 import { useContext, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import "../styles.css";
 import Button from '@mui/material/Button';
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Link } from "react-router-dom";
@@ -21,7 +20,7 @@ const useStyles = makeStyles({
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-export default function Cart(props) {
+export default function Cart() {
   
   const classes = useStyles();
   const context = useContext(CartContext);
@@ -36,7 +35,7 @@ export default function Cart(props) {
    
   },[tempCart])
   function borrarRow(id) {
-   // document.getElementById(id).remove();
+   
    const filteredCart = tempCart.filter(e => e.id !== id)
    setTempCart(filteredCart)
     context.removeItem(id)

@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-import { CartContext } from "./CartContext";
+import { CartContext } from "../Cart/CartContext";
 
 export default function Item ({prodData}) {
   

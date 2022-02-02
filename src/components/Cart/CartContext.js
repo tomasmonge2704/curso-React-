@@ -20,11 +20,11 @@ export const CustomProvider = ({defaultValue = [], children}) =>{
       setCart([...cart,{item : item, quantity: quantity}])
     }
   }
-  //is in cart
+
   const isIncart = (id) => {
     return cart.find(e=> e.item.id === id)
   }
-  //remove
+
   const removeItem = (id) =>{
     const newCart = cart
     
@@ -36,16 +36,16 @@ export const CustomProvider = ({defaultValue = [], children}) =>{
     
     setCart(newCart)
   }
-  //clear
+
   const clear = ()=>{
     setCart([])
   }
-  //cantidad de items en el carrito
+ 
   const cartCount = ()=>{
     setCartCount(cart.length)
    return cartCounter
   }
-  // total
+ 
   const cartTotal = ()=>{
     let subtotal = 0;
     cart.map(
