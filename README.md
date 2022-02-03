@@ -2,7 +2,10 @@
 
 Comando para compilar y correr el proyecto:
 ### `npm start`
+## Tutorial
 
+Recorrido de la pagina y firebase:
+(./doc/ScreenRecorder_2022-02-03.mp4)
 ## Stack
 
 - [react](https://es.reactjs.org/) - Una biblioteca de JavaScript para construir interfaces de usuario
