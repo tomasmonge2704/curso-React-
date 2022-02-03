@@ -15,11 +15,8 @@ export default function ItemCount({stock,count,onAdd,onAddFunction}){
             <Button style={{ width:"33.333%" }}>{count}</Button>
             <Button style={{ width:"33.333%" }} className="botonMas" onClick={() => {if (stock === count){console.log("no stock");} else{onAdd(count + 1)}}}><ExposurePlus1Icon/></Button>
           </ButtonGroup>
-          
-          <Button variant="outlined" color="secondary" className='BotonCarrito' style={{ width:"100%", marginTop:"2%" }} onClick={onAddFunction}>
-            Agregar al carrito 
-          </Button>
-          
+        
+          <button className='BotonCarrito button' style={{ width:"100%", marginTop:"2%" }} onClick={onAddFunction}>Agregar al carrito </button>
           </div>
          
     )

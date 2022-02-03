@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import Button from '@mui/material/Button';
 import { CartContext } from "../Cart/CartContext";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
@@ -106,18 +105,12 @@ window.addEventListener('resize', slideImage);
           to={`/cart`}
           style={{ textDecoration: "none" }}
         >
-          <Button
-            variant="contained"
-            color="secondary"
-            style={{
+          <button className="button" style={{
               justifyContent: "center",
               display: "flex",
               width: "100%",
-              marginTop: "10px",
-            }}
-          >
-            ir al carrito
-          </Button>
+              marginTop: "30px",
+            }}>Ir al carrito</button>
         </Link>
        
       </div>
