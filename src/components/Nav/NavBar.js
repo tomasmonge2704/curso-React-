@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -22,7 +22,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const ButtonAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  
+  const [cartCount, setcartCount] = React.useState();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -38,7 +38,9 @@ const ButtonAppBar = () => {
     setAnchorElUser(null);
   };
   const context = useContext(CartContext);
- 
+  useEffect(() => {
+    setcartCount(context.cartCount());
+  }, [context.cartCount()]);
   return (
     <AppBar position="static" style={{backgroundColor:"#282c34", backdropFilter:"blur(20px)" }}>
       <Container maxWidth="xl">
@@ -115,7 +117,7 @@ const ButtonAppBar = () => {
             ))}
           </Box>
           <Box style={{marginRight:"3%"}}>
-          <CartWidget greeting={context.cartCount()} />
+          <CartWidget greeting={cartCount} />
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
