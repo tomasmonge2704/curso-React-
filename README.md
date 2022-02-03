@@ -3,15 +3,26 @@
 Comando para compilar y correr el proyecto:
 ### `npm start`
 
-## base de datos del proyecto
-El proyecto usa como base de datos Firebase
+## Stack
 
-## Estilos del proyecto
-El proyecto usa Material Ui y un archivo llamado "styles.css" que esta dentro del src
+- [react](https://es.reactjs.org/) - Una biblioteca de JavaScript para construir interfaces de usuario
+- [Material Ui](https://mui.com/) - The React UI library you always wanted
 
-## Componentes
-Los componentes estan dentro del "src" en una carpeta "componentes" que a su vez tiene organizado por funcionalidad los componentes("Cart","Item","ItemDetail" y "Nav")
 
+## Project structure
+
+```
+src
+│   # componentes
+├── components
+│   # Cart
+│   # Item
+│   # ItemDetails
+│   # Nav
+└── css
+   # styles.css
+
+```
 ## Context
 el proyecto usa un contexto para proveer a los componentes distintas funcionalidades relacionadas al Carrito, que se encuentra dentro del componente "Cart", en el archivo "CartContext"
  
