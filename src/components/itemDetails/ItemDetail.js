@@ -43,31 +43,31 @@ window.addEventListener('resize', slideImage);
       <div className="product-imgs cardd" style={{padding:"10px"}}>
         <div className="img-display">
           <div className="img-showcase">
-            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])}  style={{borderRadius:"20px"}} />
-            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])}  style={{borderRadius:"20px"}}/>
-            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])}  style={{borderRadius:"20px"}} />
-            <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])}  style={{borderRadius:"20px"}}/>
+            <img src={item.pictureUrl === undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])} alt="itemDetail"  style={{borderRadius:"20px"}} />
+            <img src={item.pictureUrl === undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])} alt="itemDetail" style={{borderRadius:"20px"}}/>
+            <img src={item.pictureUrl === undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])} alt="itemDetail" style={{borderRadius:"20px"}} />
+            <img src={item.pictureUrl === undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])} alt="itemDetail" style={{borderRadius:"20px"}}/>
           </div>
         </div>
         <div className="img-select">
           <div className="img-item">
             <a href="#" data-id={1}>
-              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])}   />
+              <img src={item.pictureUrl === undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[0])}  alt="itemDetail" />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={2}>
-              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])}  />
+              <img src={item.pictureUrl === undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[1])} alt="itemDetail" />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={3}>
-              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])}  />
+              <img src={item.pictureUrl === undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[2])} alt="itemDetail" />
             </a>
           </div>
           <div className="img-item">
             <a href="#" data-id={4}>
-              <img src={item.pictureUrl == undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])}  />
+              <img src={item.pictureUrl === undefined ? ("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg"):(item.pictureUrl[3])} alt="itemDetail" />
             </a>
           </div>
         </div>

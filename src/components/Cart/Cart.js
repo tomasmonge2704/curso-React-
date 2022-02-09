@@ -1,7 +1,6 @@
 import { CartContext } from "./CartContext";
 import * as React from "react";
 import { useContext, useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
@@ -13,16 +12,12 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import IconButton from "@mui/material/IconButton";
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 export default function Cart() {
-  const classes = useStyles();
+  
   const context = useContext(CartContext);
   const [orderId, setOrderId] = useState("xxxx-xxxxx-xxxx");
   const [subtotal, setSubtotal] = useState();

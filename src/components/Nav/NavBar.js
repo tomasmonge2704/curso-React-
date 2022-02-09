@@ -19,7 +19,7 @@ import { CartContext } from '../Cart/CartContext';
 const pages = ['vehiculos', 'zapatillas', 'libros'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const ButtonAppBar = () => {
+export default function ButtonAppBar () {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [cartCount, setcartCount] = React.useState();
@@ -48,7 +48,6 @@ const ButtonAppBar = () => {
         <Link to={`/`} style={{ textDecoration: 'none' }}>
           <Button
             variant="contained"
-            noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
@@ -158,4 +157,3 @@ const ButtonAppBar = () => {
     </AppBar>
   );
 };
-export default ButtonAppBar;
