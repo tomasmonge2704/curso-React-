@@ -12,7 +12,7 @@ function App() {
     <CustomProvider>
     <BrowserRouter>
     <Routes>
-    <Route exact path="/" element={
+    <Route exact path="/curso-React-" element={
       <>
         <ButtonAppBar/>
        <header className="App-header">
@@ -22,7 +22,7 @@ function App() {
     }>
     </Route>
   
-    <Route exact path="/category/:categoryId" element={
+    <Route exact path="/curso-React-/category/:categoryId" element={
       <>
         <ButtonAppBar/>
        <header className="App-header">
@@ -32,7 +32,7 @@ function App() {
     }>
     </Route>
   
-    <Route exact path="/item/:Id" element={
+    <Route exact path="/curso-React-/item/:Id" element={
       <>
         <ButtonAppBar/>
        <header className="App-header">
@@ -42,7 +42,7 @@ function App() {
     }>
     </Route>
     
-    <Route exact path="/cart" element={
+    <Route exact path="/curso-React-/cart" element={
       <>
         <ButtonAppBar/>
        <header>

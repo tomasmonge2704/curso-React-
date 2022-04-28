@@ -65,7 +65,7 @@ export default function Cart() {
       <div className="wrap cf">
         <div className="heading cf">
           <h1>My Cart</h1>
-          <Link to={`/`} style={{ textDecoration: "none" }}>
+          <Link to={`/curso-React-`} style={{ textDecoration: "none" }}>
             <button className="button" style={{
                 float: "right",
               }}>continue shopping</button>

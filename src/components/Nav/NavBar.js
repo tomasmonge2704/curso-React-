@@ -45,7 +45,7 @@ export default function ButtonAppBar () {
     <AppBar position="static" style={{backgroundColor:"#282c34", backdropFilter:"blur(20px)" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <Link to={`/`} style={{ textDecoration: 'none' }}>
+        <Link to={`/curso-React-`} style={{ textDecoration: 'none' }}>
           <Button
             variant="contained"
             component="div"
@@ -84,7 +84,7 @@ export default function ButtonAppBar () {
               }}
             >
               {pages.map((page) => (
-                <Link to={`/category/${page}`} style={{ textDecoration: 'none'}}>  
+                <Link to={`/curso-React-/category/${page}`} style={{ textDecoration: 'none'}}>  
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
@@ -93,7 +93,7 @@ export default function ButtonAppBar () {
             </Menu>
           </Box>
           
-          <Link to={`/`} style={{ textDecoration: 'none', marginRight:"20%" }}>
+          <Link to={`/curso-React-/`} style={{ textDecoration: 'none', marginRight:"20%" }}>
           <Button
             variant="contained"
             sx={{  display: { xs: 'flex', md: 'none' } }}
@@ -104,7 +104,7 @@ export default function ButtonAppBar () {
          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:"space-evenly" }}>
             {pages.map((page) => (
-              <Link to={`/category/${page}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/curso-React-/category/${page}`} style={{ textDecoration: 'none' }}>
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}

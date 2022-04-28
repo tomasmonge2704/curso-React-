@@ -24,7 +24,7 @@ export default function CartWidget(props) {
     return(
     <div className={classes.sectionDesktop}>
          <Link
-          to={`/cart`}
+          to={`/curso-React-/cart`}
           style={{ textDecoration: "none" }}
         >  
         <IconButton aria-label="show 17 new notifications" color="inherit">

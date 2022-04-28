@@ -102,7 +102,7 @@ window.addEventListener('resize', slideImage);
         </div>
         <Link
           className={displayNone}
-          to={`/cart`}
+          to={`/curso-React-/cart`}
           style={{ textDecoration: "none" }}
         >
           <button className="button" style={{

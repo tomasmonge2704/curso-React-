@@ -37,7 +37,7 @@ export default function Item ({prodData}) {
             </div>
           </div>
         </div>
-        <Link to={`/item/${prodData.id}`} style={{ textDecoration: 'none' }}>
+        <Link to={`/curso-React-/item/${prodData.id}`} style={{ textDecoration: 'none' }}>
         <div className="inside">
           <div className="icon"><i className="material-icons">info_outline</i></div>
           <div className="contents">
